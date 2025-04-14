@@ -9,11 +9,9 @@ use App\Http\Controllers\RegisterController;
 // Tela principal (login)
 Route::get('/', [LoginController::class, 'LoginInicial']);
 
-
 // Login
 Route::get('/users/login', [LoginController::class, 'LoginInicial'])->name('login');
 Route::post('/users/login', [LoginController::class, 'login'])->name('login.perform');
-
 
 
 // Registro
@@ -21,7 +19,7 @@ Route::get('/users/register', [RegisterController::class, 'showRegisterForm'])->
 Route::post('/users/register', [RegisterController::class, 'register']);
 
 
-// Dashboard (protegido)
+// Dashboard
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
